@@ -31,6 +31,36 @@ When activated, the skill:
 3. Generates a structured PR description covering intent, mental model, risk signals, evidence, review targeting, operations, and uncertainty
 4. Validates the generated signals against the actual diff and fixes mismatches
 
+## Usage
+
+The skill has two modes: **draft** and **submit**.
+
+### Draft mode (default)
+
+Generates the PR description and displays it without touching GitHub. Use this to review and iterate before submitting.
+
+> "Write a PR description for this branch"
+>
+> "Draft PR signals for my changes"
+>
+> "Generate a PR description"
+
+### Submit mode
+
+Generates the PR description, then creates or updates the pull request on GitHub. The skill checks for an existing PR on the current branch and either creates a new one or updates the body.
+
+> "Submit a PR for this branch"
+>
+> "Create a PR with signals"
+>
+> "Update my PR description"
+
+Submit mode uses the GitHub Pull Request tool when available, and falls back to `gh` CLI. New PRs are created as drafts by default.
+
+The skill will always confirm before creating a new PR, and show a summary before updating an existing one.
+
+**Note:** If your changes include UI updates, the skill will prompt you to add screenshots or a short screencast after the PR is created.
+
 ## What's included
 
 | File | Purpose |

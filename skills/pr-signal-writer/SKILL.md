@@ -86,6 +86,17 @@ gh pr edit --body-file /tmp/pr-body.md
 - Never force-push, delete branches, or merge as part of this skill.
 - If `gh auth status` fails, instruct the user to run `gh auth login` and stop.
 
+#### Post-submit: visual evidence prompt
+
+After successfully creating or updating a PR that includes UI changes (flagged in Step 1), remind the user:
+
+> This PR includes UI changes. Consider adding screenshots or a short screencast to the Evidence section to help reviewers assess the visual impact. You can edit the PR body directly on GitHub or run:
+> ```bash
+> gh pr view --web
+> ```
+
+Do not block on this. It is a recommendation, not a requirement.
+
 ## Reference files
 
 This skill includes companion files in the `reference/` directory:
@@ -138,8 +149,21 @@ Determine:
 - change type: bug fix, feature, refactor, cleanup, infra, docs, test-only
 - scope: narrow, bounded subsystem, or cross-cutting
 - external vs internal behavior change
+- whether the change includes UI updates (see UI change detection below)
 
 Do not rely on branch name alone.
+
+#### UI change detection
+
+Scan the diff for signals that the change affects user-visible interface:
+- changes to templates, views, components, layouts, or pages
+- changes to CSS, SCSS, Tailwind classes, or style files
+- changes to frontend assets (images, icons, fonts)
+- changes to form fields, buttons, modals, or navigation
+- changes to error messages, labels, or user-facing copy
+- changes to email templates or PDF rendering
+
+If any of these are present, flag the PR as having UI changes. This flag is used in Step 6 (evidence) and after submit.
 
 ### Step 2: Infer intent
 Write:
@@ -194,6 +218,10 @@ Document:
 - how to test locally (prefer exact commands; label assumptions)
 - expected reviewer-observable behavior
 - useful artifacts: screenshots, sample requests, logs, before/after behavior
+
+If the PR includes UI changes (from Step 1), note in the Evidence section that screenshots or a short screencast would strengthen the PR. Add a placeholder like:
+
+> **Visual evidence needed:** This PR includes UI changes. Add before/after screenshots or a short screencast to this section after the PR is created.
 
 ### Step 7: Target review attention
 Identify:
