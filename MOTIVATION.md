@@ -2,25 +2,21 @@
 
 If your team is using AI coding agents, you've probably noticed something:
 
-**the bottleneck isn't writing code anymore — it's reviewing it.**
+**the bottleneck isn't writing code anymore, it's reviewing it.**
 
-We hit this wall hard. A small team, 15+ PRs a day, most of them agent-generated. Code was landing faster than anyone could review it. PRs piled up. Reviews got thinner. Bugs slipped through.
+We hit this wall hard. A small team, 15+ PRs a day, most of them agent-generated. Code was landing faster than people could review. PRs piled up. Reviews got thinner.
 
-It's easy to frame this as "PRs take too long to review."
-
-That's not quite right.
-
-**The real issue is that the volume and frequency of PRs have fundamentally changed.**
+**The volume and frequency of PRs have fundamentally changed.**
 Agentic coding dramatically increases how much code gets produced, and the traditional review model wasn't designed for that level of throughput.
 
-At the same time, most PRs — especially AI-generated ones — are **hard to review efficiently**. They show what changed, but not:
+At the same time, most PRs, especially AI-generated ones, are **hard to review efficiently**. They show what changed, but not:
 
 * why it changed
 * where the risk is
 * what was validated
 * where a reviewer should actually focus
 
-So every review starts from scratch. Reviewers — human or agent — have to reconstruct intent from raw diffs. That doesn't scale.
+So every review starts from scratch. Human or agent reviewers have to reconstruct intent from raw diffs. That doesn't scale.
 
 We realized the solution wasn't to make reviews faster.
 
